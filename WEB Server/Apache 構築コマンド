@@ -3,3 +3,46 @@ docker run -it -p 80:80 debian /bin/bash
 
 ## パッケージ情報更新
 apt-get update
+
+##Apache　インストール
+apt-get install apache2
+
+##viｍ　インストール
+apt-get install vim
+
+## Apache再起動
+service apache2 start
+
+##　testページ編集
+vi /var/www/html/index.html
+
+## ドキュメントルート変更
+vi /etc/apache2/sites-enabled/000-default.conf
+
+## Apache再起動
+service apache2 restart
+##ディレクトリへのアクセス許可
+vi /etc/apache2/apache2.conf
+
+##IP制限
+
+
+##Basic認証
+vi /etc/apache2/apache2.config
+
+===============================================
+<Directory /var/www/html>
+  AuthUserfile /etc/apache2/.htpasswd
+  AuthName "basic"
+  AuthType Basic
+  Require valid-user
+</Directory>
+===============================================
+## ユーザ登録
+htpasswd -c /etc/apache2/.htpasswd user
+
+##アクセスログ
+tail -f /var/log/apache2/access.log
+
+##エラーログ
+tail -f /var/log/apache2/error.log  
