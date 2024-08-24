@@ -1,1 +1,5 @@
-##初回プッシュ
+## DDebian起動
+docker run -it -p 80:80 debian /bin/bash
+
+## パッケージ情報更新
+apt-get update
